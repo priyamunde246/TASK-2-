@@ -1,0 +1,73 @@
+#HTML 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="todo-app">
+    <h2>📝 To-Do List</h2>
+    <div class="input-row">
+      <input type="text" id="task-input" placeholder="Enter a new task...">
+      <button onclick="addTask()">Add</button>
+    </div>
+    <ul id="task-list"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+#CSS
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="todo-app">
+    <h2>📝 To-Do List</h2>
+    <div class="input-row">
+      <input type="text" id="task-input" placeholder="Enter a new task...">
+      <button onclick="addTask()">Add</button>
+    </div>
+    <ul id="task-list"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+JS
+
+script.js
+function addTask() {
+  const input = document.getElementById("task-input");
+  const taskText = input.value.trim();
+
+  if (taskText === "") return;
+
+  const li = document.createElement("li");
+  li.innerHTML = `
+    <span>${taskText}</span>
+    <button class="delete-btn" onclick="deleteTask(this)">X</button>
+  `;
+
+  document.getElementById("task-list").appendChild(li);
+  input.value = "";
+}
+
+function deleteTask(button) {
+  button.parentElement.remove();
+}
+
